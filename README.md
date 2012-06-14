@@ -1,5 +1,5 @@
-emacs_config
-============
+Emacs configuration
+===================
 #Emacs configuration on Linux
 ##Install
 ###1. Install emacs on uBuntu 12.04
@@ -17,11 +17,11 @@ cd auto-complete
 make install
 ```
 select the path of your emacs. Normally I install to /usr/share/emacs/site-lisp/. This is default directory that emacs search.
-###2. Download emacs configuration
+###3. Download emacs configuration
 ```
 git clone https://github.com/sheepjxx/emacs_config.git
 ```
-###3. Copy as default configuration
+###4. Copy as default configuration
 ```
 cp emacs_config ~/.emacs
 ```
