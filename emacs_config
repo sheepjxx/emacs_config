@@ -1,0 +1,167 @@
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default-frame-alist (quote ((menu-bar-lines . 1) (foreground-color . "White") (background-color . "gray30") (cursor-color . "Red"))))
+ '(ecb-options-version "2.40")
+ '(gdb-show-main t)
+ '(global-linum-mode 1)
+ '(indicate-empty-lines t)
+ '(mouse-autoselect-window t)
+ '(semantic-default-submodes (quote (global-semantic-highlight-func-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode)))
+ '(text-mode-hook (quote (text-mode-hook-identify)))
+ '(tooltip-hide-delay 1000)
+ '(transient-mark-mode t)
+ '(visible-bell t))
+
+
+(setq cscope-do-not-update-database t)
+;;(load-file "/usr/share/emacs/site-lisp/xcscope.el")
+(require 'xcscope)
+
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
+
+;max screen
+(defun my-maximized-horz ()
+  (interactive)
+  (x-send-client-message
+   nil 0 nil "_NET_WM_STATE" 32
+   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0)))
+(defun my-maximized-vert ()
+  (interactive)
+  (x-send-client-message
+   nil 0 nil "_NET_WM_STATE" 32
+   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+(defun my-maximized ()
+  (interactive)
+  (x-send-client-message
+   nil 0 nil "_NET_WM_STATE" 32
+   '(1 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))
+  (interactive)
+  (x-send-client-message
+   nil 0 nil "_NET_WM_STATE" 32
+   '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
+(my-maximized)
+
+;普通设置
+(setq inhibit-startup-message t);关闭起动时闪屏
+(setq visible-bell t);关闭出错时的提示声
+(setq make-backup-files nil);不产生备份文件
+(setq default-major-mode 'text-mode);一打开就起用 text 模式
+(global-font-lock-mode t);语法高亮
+(auto-image-file-mode t);打开图片显示功能
+(fset 'yes-or-no-p 'y-or-n-p);以 y/n代表 yes/no
+(column-number-mode t);显示列号
+(show-paren-mode t);显示括号匹配
+(display-time-mode 1);显示时间，格式如下
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(tool-bar-mode nil);去掉那个大大的工具栏
+(scroll-bar-mode nil);去掉滚动条
+;(mouse-avoidance-mode 'animate);光标靠近鼠标指针时，让鼠标指针自动让开
+(setq mouse-yank-at-point t);支持中键粘贴
+(transient-mark-mode t);允许临时设置标记
+(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴
+(setq frame-title-format '("" buffer-file-name "@emacs" ));在标题栏显示buffer名称
+(setq default-fill-column 80);默认显示 80列就换行
+(show-paren-mode t)
+
+(setq default-tab-width 4);TAB length
+
+; Intent rules ans style
+(setq c-default-style '((java-mode . "java")
+						(awk-mode . "awk")
+						(other . "linux")))
+(setq c-indent-level 4)
+(setq c-continued-statement-offset 4)
+(setq c-brace-offset -4)
+(setq c-basic-offset 4)
+(setq indent-tabs-mode nil)
+(setq standard-indent 4)  
+(defun my-make-CR-do-indent()
+  (define-key c-mode-base-map "\C-m" 'c-context-line-break))
+(add-hook 'c-initialization-hook 'my-make-CR-do-indent)
+
+
+; cedet  
+(add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
+(require 'cedet)
+(autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t)
+(autoload 'speedbar-get-focus "speedbar" "Jump to speedbar frame" t)
+(define-key-after (lookup-key global-map [menu-bar tools])
+  [speedbar]
+  '("Speedbar" .
+    speedbar-frame-mode)
+  [calendar])
+(global-set-key [f4] 'speedbar);F4  /  speedbar
+
+
+(setq integrated-cedet-p (and (>= emacs-major-version 23)
+                              (>= emacs-minor-version 2)))
+
+(unless integrated-cedet-p
+  (progn
+    (setq cedet-lib "/path/foo")
+    (setq cedet-info-dir "/path/bar")))
+
+(if (boundp 'cedet-info-dir)
+    (add-to-list 'Info-default-directory-list cedet-info-dir))
+
+(if (boundp 'cedet-lib)
+    (load-file cedet-lib))
+
+(semantic-mode 1)
+
+(global-ede-mode t)
+
+(if (boundp 'semantic-load-enable-excessive-code-helpers)
+    ; Add-on CEDET
+    (progn
+      (semantic-load-enable-excessive-code-helpers)
+      ; TODO: should already be enabled by previous line
+      (global-semantic-idle-completions-mode)
+      (global-semantic-tag-folding-mode))
+   ; Integrated CEDET
+  (setq semantic-default-submodes
+        '(global-semanticdb-minor-mode
+          global-semantic-idle-scheduler-mode
+          global-semantic-idle-summary-mode
+          global-semantic-idle-completions-mode
+          global-semantic-decoration-mode
+          global-semantic-highlight-func-mode
+          global-semantic-stickyfunc-mode)))
+
+(if (boundp 'semantic-ia) (require 'semantic-ia))
+(if (boundp 'semantic-gcc) (require 'semantic-gcc))
+
+
+(define-key global-map "\C-c\C-g" 'goto-line)
+
+(require 'semantic)
+
+;;(require 'doxymacs)
+;;(add-hook 'c-mode-common-hook'doxymacs-mode)
+
+;;(add-to-list 'load-path
+;;	 "/usr/share/emacs/site-lisp/ecb-2.40")
+
+(require 'ecb)
+(setq ecb-auto-activate t)
+
+;; add hide show mode support 
+(add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook       'hs-minor-mode)
+(add-hook 'ess-mode-hook       'hs-minor-mode)
+(add-hook 'perl-mode-hook       'hs-minor-mode)
+(add-hook 'sh-mode-hook         'hs-minor-mode)
+
+(global-set-key [f1] 'hs-toggle-hiding)
+
+(server-start)
