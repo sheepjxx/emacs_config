@@ -15,10 +15,9 @@
  '(transient-mark-mode t)
  '(visible-bell t))
 
-
-(setq cscope-do-not-update-database t)
-;;(load-file "/usr/share/emacs/site-lisp/xcscope.el")
+;; Set cscope 
 (require 'xcscope)
+(setq cscope-do-not-update-database t)
 
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
@@ -27,7 +26,7 @@
   ;; If there is more than one, they won't work right.
  )
 
-;max screen
+;;Max screen
 (defun my-maximized-horz ()
   (interactive)
   (x-send-client-message
@@ -49,7 +48,7 @@
    '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
 (my-maximized)
 
-;普通设置
+;;普通设置
 (setq inhibit-startup-message t);关闭起动时闪屏
 (setq visible-bell t);关闭出错时的提示声
 (setq make-backup-files nil);不产生备份文件
@@ -88,8 +87,7 @@
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
-
-; cedet  
+;; cedet  
 (add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
 (require 'cedet)
 (autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t)
@@ -101,14 +99,8 @@
   [calendar])
 (global-set-key [f4] 'speedbar);F4  /  speedbar
 
-
 (setq integrated-cedet-p (and (>= emacs-major-version 23)
                               (>= emacs-minor-version 2)))
-
-(unless integrated-cedet-p
-  (progn
-    (setq cedet-lib "/path/foo")
-    (setq cedet-info-dir "/path/bar")))
 
 (if (boundp 'cedet-info-dir)
     (add-to-list 'Info-default-directory-list cedet-info-dir))
@@ -142,14 +134,12 @@
 (if (boundp 'semantic-ia) (require 'semantic-ia))
 (if (boundp 'semantic-gcc) (require 'semantic-gcc))
 
-
+;;Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
 
 
-
-
-;;(require 'doxymacs)
-;;(add-hook 'c-mode-common-hook'doxymacs-mode)
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook'doxymacs-mode)
 
 ;; ECB configuration
 ;(require 'ecb)
