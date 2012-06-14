@@ -4,7 +4,7 @@ emacs_config
 ##Install
 ###1. Install emacs on uBuntu 12.04
 ```
-sudo apt-get install emacs ecb cscope-el
+sudo apt-get install emacs ecb cscope-el auto-complete-el yasnippet
 ```
 ###2. Download emacs configuration
 ```
