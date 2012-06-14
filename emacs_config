@@ -137,22 +137,24 @@
           global-semantic-highlight-func-mode
           global-semantic-stickyfunc-mode)))
 
+
+(require 'semantic)
 (if (boundp 'semantic-ia) (require 'semantic-ia))
 (if (boundp 'semantic-gcc) (require 'semantic-gcc))
 
 
 (define-key global-map "\C-c\C-g" 'goto-line)
 
-(require 'semantic)
+
+
 
 ;;(require 'doxymacs)
 ;;(add-hook 'c-mode-common-hook'doxymacs-mode)
 
-;;(add-to-list 'load-path
-;;	 "/usr/share/emacs/site-lisp/ecb-2.40")
+;; ECB configuration
+;(require 'ecb)
+;(setq ecb-auto-activate t)
 
-(require 'ecb)
-(setq ecb-auto-activate t)
 
 ;; add hide show mode support 
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
@@ -163,5 +165,8 @@
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 
 (global-set-key [f1] 'hs-toggle-hiding)
+
+(require 'auto-complete-config)
+(ac-config-default)
 
 (server-start)
