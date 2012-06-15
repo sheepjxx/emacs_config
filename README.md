@@ -1,5 +1,3 @@
-Emacs configuration
-===================
 #Emacs configuration on Linux
 ##Install
 ###1. Install emacs on uBuntu 12.04
