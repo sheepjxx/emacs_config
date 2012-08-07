@@ -1,30 +1,22 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(custom-enabled-themes (quote (misterioso)))
+ '(custom-safe-themes (quote ("48251910e57ec24bfd1cbb672b394aef394fc5fc1d117becd961fd47a60fe46c" "f44d40d10b4d54985a688b2941ffd2361c284a438fca1da1390377df7bbb20ac" default)))
  '(default-frame-alist (quote ((menu-bar-lines . 1) (foreground-color . "White") (background-color . "gray30") (cursor-color . "Red"))))
  '(ecb-options-version "2.40")
- '(gdb-show-main t)
- '(global-linum-mode 1)
- '(indicate-empty-lines t)
- '(mouse-autoselect-window t)
- '(semantic-default-submodes (quote (global-semantic-highlight-func-mode global-semantic-idle-scheduler-mode global-semanticdb-minor-mode)))
- '(text-mode-hook (quote (text-mode-hook-identify)))
- '(tooltip-hide-delay 1000)
- '(transient-mark-mode t)
- '(visible-bell t))
+ '(gdb-show-main t))
 
-;; Set cscope 
-(require 'xcscope)
-(setq cscope-do-not-update-database t)
 
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+) 
 
 ;;Max screen
 (defun my-maximized-horz ()
@@ -48,30 +40,28 @@
    '(1 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))
 (my-maximized)
 
-;;普通设置
-(setq inhibit-startup-message t);关闭起动时闪屏
-(setq visible-bell t);关闭出错时的提示声
-(setq make-backup-files nil);不产生备份文件
-(setq default-major-mode 'text-mode);一打开就起用 text 模式
-(global-font-lock-mode t);语法高亮
-(auto-image-file-mode t);打开图片显示功能
-(fset 'yes-or-no-p 'y-or-n-p);以 y/n代表 yes/no
-(column-number-mode t);显示列号
-(show-paren-mode t);显示括号匹配
-(display-time-mode 1);显示时间，格式如下
+;;General setup
+(setq inhibit-startup-message t);shutdown startup message
+(setq visible-bell t);shutdown bell when error 
+(setq make-backup-files nil);do not generate backup file
+(setq default-major-mode 'text-mode);default as text mode
+(global-font-lock-mode t);grammar high ligth
+(auto-image-file-mode t);enable image show
+(fset 'yes-or-no-p 'y-or-n-p);using y/n instead of yes/no
+(column-number-mode t);show column
+(show-paren-mode t);show paren
+(display-time-mode 1);show time
 (setq display-time-24hr-format t)
 (setq display-time-day-and-date t)
-(tool-bar-mode nil);去掉那个大大的工具栏
-(scroll-bar-mode nil);去掉滚动条
-;(mouse-avoidance-mode 'animate);光标靠近鼠标指针时，让鼠标指针自动让开
-(setq mouse-yank-at-point t);支持中键粘贴
-(transient-mark-mode t);允许临时设置标记
-(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴
-(setq frame-title-format '("" buffer-file-name "@emacs" ));在标题栏显示buffer名称
-(setq default-fill-column 80);默认显示 80列就换行
-(show-paren-mode t)
-
+(tool-bar-mode nil);disable tool bar
+(scroll-bar-mode nil);disable scroll bar
+(setq mouse-yank-at-point t);enable mouse key yank
+(transient-mark-mode t);enable temp mark
+(setq x-select-enable-clipboard t);support clipboard
+(setq frame-title-format '("" buffer-file-name "@emacs" ));show buffer name
+(setq default-fill-column 80);default to 80 column
 (setq default-tab-width 4);TAB length
+(global-linum-mode 1);show column number at side 
 
 ; Intent rules ans style
 (setq c-default-style '((java-mode . "java")
@@ -87,64 +77,14 @@
   (define-key c-mode-base-map "\C-m" 'c-context-line-break))
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
-;; cedet  
-(add-hook 'texinfo-mode-hook (lambda () (require 'sb-texinfo)))
-(require 'cedet)
-(autoload 'speedbar-frame-mode "speedbar" "Popup a speedbar frame" t)
-(autoload 'speedbar-get-focus "speedbar" "Jump to speedbar frame" t)
-(define-key-after (lookup-key global-map [menu-bar tools])
-  [speedbar]
-  '("Speedbar" .
-    speedbar-frame-mode)
-  [calendar])
-(global-set-key [f4] 'speedbar);F4  /  speedbar
-
-(setq integrated-cedet-p (and (>= emacs-major-version 23)
-                              (>= emacs-minor-version 2)))
-
-(if (boundp 'cedet-info-dir)
-    (add-to-list 'Info-default-directory-list cedet-info-dir))
-
-(if (boundp 'cedet-lib)
-    (load-file cedet-lib))
-
-(semantic-mode 1)
-
-(global-ede-mode t)
-
-(if (boundp 'semantic-load-enable-excessive-code-helpers)
-    ; Add-on CEDET
-    (progn
-      (semantic-load-enable-excessive-code-helpers)
-      ; TODO: should already be enabled by previous line
-      (global-semantic-idle-completions-mode)
-      (global-semantic-tag-folding-mode))
-   ; Integrated CEDET
-  (setq semantic-default-submodes
-        '(global-semanticdb-minor-mode
-          global-semantic-idle-scheduler-mode
-          global-semantic-idle-summary-mode
-          global-semantic-idle-completions-mode
-          global-semantic-decoration-mode
-          global-semantic-highlight-func-mode
-          global-semantic-stickyfunc-mode)))
-
+;; Set cscope 
+(require 'xcscope)
+(setq cscope-do-not-update-database t)
 
 (require 'semantic)
-(if (boundp 'semantic-ia) (require 'semantic-ia))
-(if (boundp 'semantic-gcc) (require 'semantic-gcc))
-
-;;Key binding
-(define-key global-map "\C-c\C-g" 'goto-line)
-
 
 (require 'doxymacs)
 (add-hook 'c-mode-common-hook'doxymacs-mode)
-
-;; ECB configuration
-;(require 'ecb)
-;(setq ecb-auto-activate t)
-
 
 ;; add hide show mode support 
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
@@ -154,9 +94,12 @@
 (add-hook 'perl-mode-hook       'hs-minor-mode)
 (add-hook 'sh-mode-hook         'hs-minor-mode)
 
-(global-set-key [f1] 'hs-toggle-hiding)
-
 (require 'auto-complete-config)
 (ac-config-default)
 
-(server-start)
+;;My Key binding
+(define-key global-map "\C-c\C-g" 'goto-line)
+
+(global-set-key [f4] 'speedbar)
+
+;(server-start)
