@@ -78,10 +78,25 @@
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
 ;; Set cscope 
+
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
+(define-key global-map [(control f3)]  'cscope-set-initial-directory)
+(define-key global-map [(control f4)]  'cscope-unset-initial-directory)
+(define-key global-map [(control f5)]  'cscope-find-this-symbol)
+(define-key global-map [(control f6)]  'cscope-find-global-definition)
+(define-key global-map [(control f7)]  'cscope-find-global-definition-no-prompting)
+(define-key global-map [(control f8)]  'cscope-pop-mark)
+(define-key global-map [(control f9)]  'cscope-next-symbol)
+(define-key global-map [(control f10)] 'cscope-next-file)
+(define-key global-map [(control f11)] 'cscope-prev-symbol)
+(define-key global-map [(control f12)] 'cscope-prev-file)
+(define-key global-map [(meta f9)]     'cscope-display-buffer)
+(define-key global-map [(meta f10)]    'cscope-display-buffer-toggle)
 
 (require 'semantic)
+
+(require 'yasnippet)
 
 (require 'doxymacs)
 (add-hook 'c-mode-common-hook'doxymacs-mode)
@@ -103,3 +118,25 @@
 (global-set-key [f4] 'speedbar)
 
 ;(server-start)
+
+
+(defun find-file-upwards (file-to-find)
+  "Recursively searches each parent directory starting from the default-directory.
+looking for a file with name file-to-find.  Returns the path to it
+or nil if not found."
+  (labels
+      ((find-file-r (path)
+                    (let* ((parent (file-name-directory path))
+                           (possible-file (concat parent file-to-find)))
+                      (cond
+                       ((file-exists-p possible-file) possible-file) ; Found
+                       ;; The parent of ~ is nil and the parent of / is itself.
+                       ;; Thus the terminating condition for not finding the file
+                       ;; accounts for both.
+                       ((or (null parent) (equal parent (directory-file-name parent))) nil) ; Not found
+                       (t (find-file-r (directory-file-name parent))))))) ; Continue
+    (find-file-r default-directory)))
+(let ((my-tags-file (find-file-upwards "TAGS")))
+  (when my-tags-file
+    (message "Loading tags file: %s" my-tags-file)
+    (visit-tags-table my-tags-file)))
