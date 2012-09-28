@@ -118,7 +118,8 @@
 (global-set-key [f4] 'speedbar)
 
 ;(server-start)
-
+;;emerge configuration
+(setq emerge-diff-options "--ignore-all-space")
 
 (defun find-file-upwards (file-to-find)
   "Recursively searches each parent directory starting from the default-directory.
@@ -136,7 +137,7 @@ or nil if not found."
                        ((or (null parent) (equal parent (directory-file-name parent))) nil) ; Not found
                        (t (find-file-r (directory-file-name parent))))))) ; Continue
     (find-file-r default-directory)))
-(let ((my-tags-file (find-file-upwards "TAGS")))
+(let ((my-tags-file (find-file-upwards "etags")))
   (when my-tags-file
     (message "Loading tags file: %s" my-tags-file)
     (visit-tags-table my-tags-file)))
