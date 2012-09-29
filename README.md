@@ -14,3 +14,7 @@ git clone https://github.com/sheepjxx/emacs_config.git
 ```
 cp emacs_config ~/.emacs
 ```
+#Useful packages for developemnt
+```
+sudo apt-get install tree
+```
