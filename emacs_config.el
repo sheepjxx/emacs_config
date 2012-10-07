@@ -114,6 +114,8 @@
 
 ;;My Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
+(global-set-key (kbd "C-<pause>") 'previous-buffer)
+(global-set-key (kbd "M-<pause>") 'next-buffer)
 
 (global-set-key [f4] 'speedbar)
 
