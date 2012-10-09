@@ -18,7 +18,7 @@ cp emacs_config ~/.emacs
 ```
 sudo apt-get install tree
 ```
-###4. exuberant-ctags configuration
+###1. exuberant-ctags configuration
 ```
 sudo update-alternatives --install "/usr/bin/ctags" "ctags" "/usr/bin/ctags-exuberant" 1
 sudo update-alternatives --install "/usr/bin/etags" "etags" "/usr/bin/ctags-exuberant" 1 
