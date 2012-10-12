@@ -1,5 +1,6 @@
 #Emacs configuration on Linux
-##Install
+##Install Guid
+This guide is only for uBuntu 12.04 version, haven't been test on other OS. emacs "ecb" can not be installed using apt-get. 
 ###1. Install emacs on uBuntu 12.04
 ```
 sudo apt-get install git git-svn gitk qgit emacs ecb cscope-el auto-complete-el git-el yasnippet exuberant-ctags doxymacs
@@ -14,10 +15,6 @@ git clone https://github.com/sheepjxx/emacs_config.git
 ```
 cp emacs_config ~/.emacs
 ```
-#Useful packages for developemnt
-```
-sudo apt-get install tree
-```
 ###1. exuberant-ctags configuration
 ```
 sudo update-alternatives --install "/usr/bin/ctags" "ctags" "/usr/bin/ctags-exuberant" 1
@@ -29,8 +26,9 @@ Using ctags-exuberant as ctags and etags generation programme
 ###2. Install etags-update.el
 Go to the following link and install step by step
 https://github.com/mattkeller/etags-update
-##Install other useful tools 
-###1. zsh
+
+#Install and config other useful tools 
+###1. zsh (Awesome shell for Linux developer)
 ```
 sudo apt-get install zsh
 ```
@@ -40,6 +38,12 @@ chsh -s /bin/zsh
 ```
 Using "chsh" command to change zsh to default shell
 Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "pygmalion" to create my theme which is stored in zsh folder.
+
+#Useful packages for developemnt
+```
+sudo apt-get install tree
+```
+
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
