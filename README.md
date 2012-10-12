@@ -35,7 +35,10 @@ https://github.com/mattkeller/etags-update
 sudo apt-get install zsh
 ```
 Instatll configuration from https://github.com/robbyrussell/oh-my-zsh
-
+```
+chsh -s /bin/zsh
+```
+Using "chsh" command to change zsh to default shell
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
