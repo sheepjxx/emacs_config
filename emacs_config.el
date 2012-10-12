@@ -18,6 +18,9 @@
  ;; If there is more than one, they won't work right.
 ) 
 
+;;set local file load path
+;;(add-to-list 'load-path "~/.emacs.d/lisp/")
+
 ;;Max screen
 (defun my-maximized-horz ()
   (interactive)
@@ -119,10 +122,16 @@
 
 (global-set-key [f4] 'speedbar)
 
+;;enable emacs server mode
 ;(server-start)
+
+;;ediff configuration
+(setq ediff-split-window-function 'split-window-horizontally)
+
 ;;emerge configuration
 (setq emerge-diff-options "--ignore-all-space")
 
+;;configuration related to TAGS
 (defun find-file-upwards (file-to-find)
   "Recursively searches each parent directory starting from the default-directory.
 looking for a file with name file-to-find.  Returns the path to it
@@ -139,7 +148,11 @@ or nil if not found."
                        ((or (null parent) (equal parent (directory-file-name parent))) nil) ; Not found
                        (t (find-file-r (directory-file-name parent))))))) ; Continue
     (find-file-r default-directory)))
-(let ((my-tags-file (find-file-upwards "etags")))
+(let ((my-tags-file (find-file-upwards "TAGS")))
   (when my-tags-file
     (message "Loading tags file: %s" my-tags-file)
     (visit-tags-table my-tags-file)))
+
+;; (require 'etags-update)
+;; (setq etags-update-mode t)
+
