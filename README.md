@@ -39,7 +39,7 @@ Instatll configuration from https://github.com/robbyrussell/oh-my-zsh
 chsh -s /bin/zsh
 ```
 Using "chsh" command to change zsh to default shell
-Modify ~/.zshrc file, change theme to one you love. I use "pygmalion".
+Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "pygmalion" to create my theme which is stored in zsh folder.
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
