@@ -26,6 +26,16 @@ sudo update-alternatives --config ctags
 sudo update-alternatives --config etags
 ```
 Using ctags-exuberant as ctags and etags generation programme
+###2. Install etags-update.el
+Go to the following link and install step by step
+https://github.com/mattkeller/etags-update
+##Install other useful tools 
+###1. zsh
+```
+sudo apt-get install zsh
+```
+Instatll configuration from https://github.com/robbyrussell/oh-my-zsh
+
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
