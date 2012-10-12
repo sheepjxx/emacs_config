@@ -15,7 +15,7 @@ git clone https://github.com/sheepjxx/emacs_config.git
 ```
 cp emacs_config ~/.emacs
 ```
-###1. exuberant-ctags configuration
+###4. exuberant-ctags configuration
 ```
 sudo update-alternatives --install "/usr/bin/ctags" "ctags" "/usr/bin/ctags-exuberant" 1
 sudo update-alternatives --install "/usr/bin/etags" "etags" "/usr/bin/ctags-exuberant" 1 
@@ -23,7 +23,7 @@ sudo update-alternatives --config ctags
 sudo update-alternatives --config etags
 ```
 Using ctags-exuberant as ctags and etags generation programme
-###2. Install etags-update.el
+###5. Install etags-update.el
 Go to the following link and install step by step
 https://github.com/mattkeller/etags-update
 
