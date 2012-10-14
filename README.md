@@ -47,7 +47,5 @@ sudo apt-get install tree
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
-```
-```
 2012-10-12 add zsh configuration;ediff,emerge config
 ```
