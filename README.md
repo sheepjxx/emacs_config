@@ -38,10 +38,12 @@ chsh -s /bin/zsh
 ```
 Using "chsh" command to change zsh to default shell
 Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "pygmalion" to create my theme which is stored in zsh folder.
+###2. modify git config
+
 
 #Useful packages for developemnt
 ```
-sudo apt-get install tree
+sudo apt-get install tree rpm
 ```
 
 ##Note
