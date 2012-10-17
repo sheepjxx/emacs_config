@@ -38,8 +38,16 @@ chsh -s /bin/zsh
 ```
 Using "chsh" command to change zsh to default shell
 Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "pygmalion" to create my theme which is stored in zsh folder.
-###2. modify git config
 
+###2. config git for convenient
+```
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git config --global core.editor emacs
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branch
+```
 
 #Useful packages for developemnt
 ```
@@ -49,7 +57,5 @@ sudo apt-get install tree rpm rar unrar
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
-```
-```
 2012-10-12 add zsh configuration;ediff,emerge config
 ```
