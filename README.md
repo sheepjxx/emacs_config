@@ -43,7 +43,7 @@ Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "
 
 #Useful packages for developemnt
 ```
-sudo apt-get install tree rpm
+sudo apt-get install tree rpm rar unrar
 ```
 
 ##Note
