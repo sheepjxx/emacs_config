@@ -44,6 +44,7 @@ Modify ~/.zshrc file(ZSH_THEME parameter), change theme to one you love. I use "
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 git config --global core.editor emacs
+git config --global alias.lg log --stat --graph --pretty=format:'%Cred%h%Creset by %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
 git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
