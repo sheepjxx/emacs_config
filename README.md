@@ -54,7 +54,6 @@ git config --global alias.br branch
 ```
 sudo apt-get install tree rpm rar unrar ssh curl
 ```
-
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
