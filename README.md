@@ -56,7 +56,7 @@ sudo apt-get install tree rpm rar unrar ssh curl
 ```
 #Useful packages for Embedded Linux developemnt
 ```
-sudo apt-get tftpd nfs-server
+sudo apt-get tftpd nfs-server libncurses5-dev
 ```
 ##Note
 ```
