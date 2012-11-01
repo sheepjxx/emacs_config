@@ -56,7 +56,7 @@ sudo apt-get install tree rpm rar unrar ssh curl freemind
 ```
 #Useful packages for Embedded Linux developemnt
 ```
-sudo apt-get tftp tftpd nfs-server libncurses5-dev openjdk-7-jre
+sudo apt-get tftp tftpd nfs-server libncurses5-dev openjdk-7-jre minicom        
 ```
 ##Note
 ```
