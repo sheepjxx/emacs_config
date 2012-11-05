@@ -52,7 +52,7 @@ git config --global alias.br branch
 
 #Useful packages for developemnt
 ```
-sudo apt-get install tree rpm rar unrar ssh curl freemind
+sudo apt-get install tree rpm rar unrar ssh curl freemind subversion
 ```
 #Useful packages for Embedded Linux developemnt
 ```
