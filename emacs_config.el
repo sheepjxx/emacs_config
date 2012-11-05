@@ -101,8 +101,8 @@
 
 (require 'yasnippet)
 
-(require 'doxymacs)
-(add-hook 'c-mode-common-hook'doxymacs-mode)
+;;(require 'doxymacs)
+;;(add-hook 'c-mode-common-hook'doxymacs-mode)
 
 ;; add hide show mode support 
 (add-hook 'c-mode-common-hook   'hs-minor-mode)
