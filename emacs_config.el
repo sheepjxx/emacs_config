@@ -65,6 +65,7 @@
 (setq default-fill-column 80);default to 80 column
 (setq default-tab-width 4);TAB length
 (global-linum-mode 1);show column number at side 
+(setq kill-whole-line t); kill whole line include new line
 
 ; Intent rules ans style
 (setq c-default-style '((java-mode . "java")
@@ -121,6 +122,16 @@
 (global-set-key (kbd "M-<pause>") 'next-buffer)
 
 (global-set-key [f4] 'speedbar)
+
+(defun copy-line (arg)
+    "Copy lines (as many as prefix argument) in the kill ring"
+    (interactive "p")
+    (kill-ring-save (line-beginning-position)
+                    (line-beginning-position (+ 1 arg)))
+    (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+  ;; optional key binding
+(global-set-key "\C-c\C-k" 'copy-line)
+
 
 ;;enable emacs server mode
 ;(server-start)
