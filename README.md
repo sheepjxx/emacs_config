@@ -3,7 +3,7 @@
 This guide is only for uBuntu 12.04 version, haven't been test on other OS. emacs "ecb" can not be installed using apt-get. 
 ###1. Install emacs on uBuntu 12.04
 ```
-sudo apt-get install git git-svn gitk qgit emacs ecb cscope-el auto-complete-el git-el yasnippet exuberant-ctags doxymacs
+sudo apt-get install git git-svn gitk qgit emacs ecb cscope-el auto-complete-el git-el yasnippet doxymacs
 ```
 
 select the path of your emacs. Normally I install to /usr/share/emacs/site-lisp/. This is default directory that emacs search.
@@ -22,12 +22,7 @@ sudo update-alternatives --install "/usr/bin/etags" "etags" "/usr/bin/ctags-exub
 sudo update-alternatives --config ctags
 sudo update-alternatives --config etags
 ```
-Using ctags-exuberant as ctags and etags generation programme
-###5. Install etags-update.el
-Go to the following link and install step by step
-https://github.com/mattkeller/etags-update
-
-###6. Copy all lisp files under lisp folder to /usr/share/emacs/site-lisp/
+###5. Copy all lisp files under lisp folder to /usr/share/emacs/site-lisp/
 ```
 sudo cp -rf lisp /us/share/emacs/site-lisp/
 ```

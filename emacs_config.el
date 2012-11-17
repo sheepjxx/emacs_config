@@ -207,6 +207,9 @@ or nil if not found."
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(require 'ace-jump-mode)
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
 ;;My Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
 (global-set-key (kbd "C-<pause>") 'previous-buffer)
