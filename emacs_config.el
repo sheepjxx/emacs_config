@@ -164,6 +164,10 @@ or nil if not found."
     (message "Loading tags file: %s" my-tags-file)
     (visit-tags-table my-tags-file)))
 
+(require 'framemove)
+    (windmove-default-keybindings)
+    (setq framemove-hook-into-windmove t)
+
 ;; (require 'etags-update)
 ;; (setq etags-update-mode t)
 
