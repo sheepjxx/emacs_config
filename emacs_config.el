@@ -67,6 +67,7 @@
 (global-linum-mode 1);show column number at side 
 (setq kill-whole-line t); kill whole line include new line
 
+
 ; Intent rules ans style
 (setq c-default-style '((java-mode . "java")
 						(awk-mode . "awk")
@@ -116,12 +117,6 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-;;My Key binding
-(define-key global-map "\C-c\C-g" 'goto-line)
-(global-set-key (kbd "C-<pause>") 'previous-buffer)
-(global-set-key (kbd "M-<pause>") 'next-buffer)
-
-(global-set-key [f4] 'speedbar)
 
 (defun copy-line (arg)
     "Copy lines (as many as prefix argument) in the kill ring"
@@ -164,10 +159,51 @@ or nil if not found."
     (message "Loading tags file: %s" my-tags-file)
     (visit-tags-table my-tags-file)))
 
+;;default window move and frame move setting
+(when (fboundp 'windmove-default-keybindings)
+      (windmove-default-keybindings))
+
 (require 'framemove)
     (windmove-default-keybindings)
     (setq framemove-hook-into-windmove t)
 
+;; Windows Cycling
+(defun windmove-up-cycle()
+  (interactive)
+  (condition-case nil (windmove-up)
+    (error (condition-case nil (windmove-down)
+         (error (condition-case nil (windmove-right) (error (condition-case nil (windmove-left) (error (windmove-up))))))))))
+
+(defun windmove-down-cycle()
+  (interactive)
+  (condition-case nil (windmove-down)
+    (error (condition-case nil (windmove-up)
+         (error (condition-case nil (windmove-left) (error (condition-case nil (windmove-right) (error (windmove-down))))))))))
+
+(defun windmove-right-cycle()
+  (interactive)
+  (condition-case nil (windmove-right)
+    (error (condition-case nil (windmove-left)
+         (error (condition-case nil (windmove-up) (error (condition-case nil (windmove-down) (error (windmove-right))))))))))
+
+(defun windmove-left-cycle()
+  (interactive)
+  (condition-case nil (windmove-left)
+    (error (condition-case nil (windmove-right)
+         (error (condition-case nil (windmove-down) (error (condition-case nil (windmove-up) (error (windmove-left))))))))))
+
+(global-set-key (kbd "M-<up>") 'windmove-up-cycle)
+(global-set-key (kbd "M-<down>") 'windmove-down-cycle)
+(global-set-key (kbd "M-<right>") 'windmove-right-cycle)
+(global-set-key (kbd "M-<left>") 'windmove-left-cycle)
+
 ;; (require 'etags-update)
 ;; (setq etags-update-mode t)
+
+;;My Key binding
+(define-key global-map "\C-c\C-g" 'goto-line)
+(global-set-key (kbd "C-<pause>") 'previous-buffer)
+(global-set-key (kbd "M-<pause>") 'next-buffer)
+
+(global-set-key [f4] 'speedbar)
 
