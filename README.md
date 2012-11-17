@@ -27,6 +27,11 @@ Using ctags-exuberant as ctags and etags generation programme
 Go to the following link and install step by step
 https://github.com/mattkeller/etags-update
 
+###6. Copy all lisp files under lisp folder to /usr/share/emacs/site-lisp/
+```
+sudo cp -rf lisp /us/share/emacs/site-lisp/
+```
+
 #Install and config other useful tools 
 ###1. zsh (Awesome shell for Linux developer)
 ```
