@@ -200,6 +200,13 @@ or nil if not found."
 ;; (require 'etags-update)
 ;; (setq etags-update-mode t)
 
+(require 'package)
+;; Any add to list for package-archives (to add marmalade or melpa) goes here
+(add-to-list 'package-archives 
+    '("marmalade" .
+      "http://marmalade-repo.org/packages/"))
+(package-initialize)
+
 ;;My Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
 (global-set-key (kbd "C-<pause>") 'previous-buffer)
