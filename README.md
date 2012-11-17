@@ -26,6 +26,12 @@ sudo update-alternatives --config etags
 ```
 sudo cp -rf lisp /us/share/emacs/site-lisp/
 ```
+###6. Install packages from package management ELPA
+For emacs version smaller than 23, you need to copy package.el under list to /usr/share/emacs/sit-lisp, emacs24 already has package.el buildin
+```
+M-x list-packages
+```
+Install ace-jump-mode 
 
 #Install and config other useful tools 
 ###1. zsh (Awesome shell for Linux developer)
