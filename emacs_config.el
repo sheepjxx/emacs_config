@@ -1,3 +1,9 @@
+;; (require 'color-theme)
+;; (eval-after-load "color-theme"
+;;   '(progn
+;;      (color-theme-initialize)
+;;      (color-theme-gray30)))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -6,7 +12,7 @@
  '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(custom-enabled-themes (quote (misterioso)))
  '(custom-safe-themes (quote ("48251910e57ec24bfd1cbb672b394aef394fc5fc1d117becd961fd47a60fe46c" "f44d40d10b4d54985a688b2941ffd2361c284a438fca1da1390377df7bbb20ac" default)))
- '(default-frame-alist (quote ((menu-bar-lines . 1) (foreground-color . "White") (background-color . "gray30") (cursor-color . "Red"))))
+ '(default-frame-alist (quote ((menu-bar-lines . 1) (foreground-color . "gray90") (background-color . "gray20") (cursor-color . "Red"))))
  '(ecb-options-version "2.40")
  '(gdb-show-main t))
 
@@ -15,7 +21,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-) 
+ )
+ 
 
 ;;set local file load path
 ;;(add-to-list 'load-path "~/.emacs.d/lisp/")
