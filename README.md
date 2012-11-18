@@ -31,7 +31,9 @@ For emacs version smaller than 23, you need to copy package.el under list to /us
 ```
 M-x list-packages
 ```
-Install ace-jump-mode 
+Install 
+		ace-jump-mode 
+		lua-mode
 
 #Install and config other useful tools 
 ###1. zsh (Awesome shell for Linux developer)

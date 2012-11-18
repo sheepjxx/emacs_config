@@ -10,7 +10,6 @@
  '(ecb-options-version "2.40")
  '(gdb-show-main t))
 
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -67,7 +66,6 @@
 (global-linum-mode 1);show column number at side 
 (setq kill-whole-line t); kill whole line include new line
 
-
 ; Intent rules ans style
 (setq c-default-style '((java-mode . "java")
 						(awk-mode . "awk")
@@ -83,7 +81,6 @@
 (add-hook 'c-initialization-hook 'my-make-CR-do-indent)
 
 ;; Set cscope 
-
 (require 'xcscope)
 (setq cscope-do-not-update-database t)
 (define-key global-map [(control f3)]  'cscope-set-initial-directory)
@@ -98,35 +95,6 @@
 (define-key global-map [(control f12)] 'cscope-prev-file)
 (define-key global-map [(meta f9)]     'cscope-display-buffer)
 (define-key global-map [(meta f10)]    'cscope-display-buffer-toggle)
-
-(require 'semantic)
-
-(require 'yasnippet)
-
-;;(require 'doxymacs)
-;;(add-hook 'c-mode-common-hook'doxymacs-mode)
-
-;; add hide show mode support 
-(add-hook 'c-mode-common-hook   'hs-minor-mode)
-(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
-(add-hook 'java-mode-hook       'hs-minor-mode)
-(add-hook 'ess-mode-hook       'hs-minor-mode)
-(add-hook 'perl-mode-hook       'hs-minor-mode)
-(add-hook 'sh-mode-hook         'hs-minor-mode)
-
-(require 'auto-complete-config)
-(ac-config-default)
-
-
-(defun copy-line (arg)
-    "Copy lines (as many as prefix argument) in the kill ring"
-    (interactive "p")
-    (kill-ring-save (line-beginning-position)
-                    (line-beginning-position (+ 1 arg)))
-    (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
-  ;; optional key binding
-(global-set-key "\C-c\C-k" 'copy-line)
-
 
 ;;enable emacs server mode
 ;(server-start)
@@ -207,13 +175,41 @@ or nil if not found."
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(require 'semantic)
+(require 'yasnippet)
+(require 'doxymacs)
+(add-hook 'c-mode-common-hook'doxymacs-mode)
+
+;; add hide show mode support 
+(add-hook 'c-mode-common-hook   'hs-minor-mode)
+(add-hook 'emacs-lisp-mode-hook 'hs-minor-mode)
+(add-hook 'java-mode-hook       'hs-minor-mode)
+(add-hook 'ess-mode-hook       'hs-minor-mode)
+(add-hook 'perl-mode-hook       'hs-minor-mode)
+(add-hook 'sh-mode-hook         'hs-minor-mode)
+
+(require 'auto-complete-config)
+(ac-config-default)
+
 (require 'ace-jump-mode)
   (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+(require 'icicles)
+(icy-mode 1)
 
 ;;My Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
 (global-set-key (kbd "C-<pause>") 'previous-buffer)
 (global-set-key (kbd "M-<pause>") 'next-buffer)
+;;Copy line command
+(defun copy-line (arg)
+    "Copy lines (as many as prefix argument) in the kill ring"
+    (interactive "p")
+    (kill-ring-save (line-beginning-position)
+                    (line-beginning-position (+ 1 arg)))
+    (message "%d line%s copied" arg (if (= 1 arg) "" "s")))
+  ;; optional key binding
+(global-set-key "\C-c\C-k" 'copy-line)
 
 (global-set-key [f4] 'speedbar)
 
