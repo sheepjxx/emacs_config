@@ -5,11 +5,12 @@
 ;;      (color-theme-gray30)))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(bmkp-last-as-first-bookmark-file "/home/e534729/.emacs.bmk")
  '(custom-enabled-themes (quote (misterioso)))
  '(custom-safe-themes (quote ("48251910e57ec24bfd1cbb672b394aef394fc5fc1d117becd961fd47a60fe46c" "f44d40d10b4d54985a688b2941ffd2361c284a438fca1da1390377df7bbb20ac" default)))
  '(default-frame-alist (quote ((menu-bar-lines . 1) (foreground-color . "gray90") (background-color . "gray20") (cursor-color . "Red"))))
@@ -17,10 +18,10 @@
  '(gdb-show-main t))
 
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  )
  
 
@@ -182,6 +183,7 @@ or nil if not found."
       "http://marmalade-repo.org/packages/"))
 (package-initialize)
 
+(require 'bookmark+)
 (require 'semantic)
 (require 'yasnippet)
 (require 'doxymacs)
@@ -203,6 +205,41 @@ or nil if not found."
 
 (require 'icicles)
 (icy-mode 1)
+
+;;C++ mode configuration
+(defun cpp-highlight-if-0/1 ()
+  "Modify the face of text in between #if 0 ... #endif."
+  (interactive)
+  (setq cpp-known-face '(background-color . "dim gray"))
+  (setq cpp-unknown-face 'default)
+  (setq cpp-face-type 'dark)
+  (setq cpp-known-writable 't)
+  (setq cpp-unknown-writable 't)
+  (setq cpp-edit-list
+        '((#("1" 0 1
+             (fontified nil))
+           nil
+           (background-color . "dim gray")
+           both nil)
+          (#("0" 0 1
+             (fontified nil))
+           (background-color . "dim gray")
+           nil
+           both nil)))
+  (cpp-highlight-buffer t))
+
+(defun jpk/c-mode-hook ()
+  (cpp-highlight-if-0/1)
+  (add-hook 'after-save-hook 'cpp-highlight-if-0/1 'append 'local)
+  )
+
+(add-hook 'c-mode-common-hook 'jpk/c-mode-hook)
+;;make sure .h file is opend as c++ mode
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
+; Use PSGML for sgml and xml major modes.
+(defalias 'xml-mode 'sgml-mode 
+    "Use `sgml-mode' instead of nXML's `xml-mode'.")
 
 ;;My Key binding
 (define-key global-map "\C-c\C-g" 'goto-line)
