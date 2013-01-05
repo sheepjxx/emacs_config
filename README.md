@@ -3,7 +3,7 @@
 This guide is only for uBuntu 12.04 version, haven't been test on other OS. emacs "ecb" can not be installed using apt-get. 
 ###1. Install emacs on uBuntu 12.04
 ```
-sudo apt-get install git git-svn gitk qgit emacs ecb cscope-el auto-complete-el git-el yasnippet icicles emacs-goodies-el doxymacs
+sudo apt-get install git git-svn gitk qgit emacs ecb cscope-el auto-complete-el git-el yasnippet icicles emacs-goodies-el doxymacs icicles
 ```
 
 select the path of your emacs. Normally I install to /usr/share/emacs/site-lisp/. This is default directory that emacs search.
@@ -34,6 +34,7 @@ M-x list-packages
 Install 
 		ace-jump-mode 
 		lua-mode
+		bookmark+
 
 #Install and config other useful tools 
 ###1. zsh (Awesome shell for Linux developer)
