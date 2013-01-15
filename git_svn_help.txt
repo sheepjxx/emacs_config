@@ -1,0 +1,55 @@
+1. Checkout code from remote server 
+git svn clone URL
+2. Checkout standard layout from remote server
+git svn clone -s URL
+3. Checkout from version N from remote server
+git svn clone -rN:HEAD URL
+4. Check svn info
+git svn info
+5. Check log
+git svn log
+git log
+6. Create branch
+git branch BRANCH_NAME
+7. add file from unstage to stage
+git add FILE_NAME
+8. commit to local copy
+git commit -m "MESSAGE"
+9. update to latest version of remote
+git svn rebase
+10. commit to remote server
+git svn dcommit
+11. find certain version of svn
+git svn find-rev rN
+12. checkout branch or certain version
+git checkout VERSIN_NUMBER
+git checkout BRANCH_NAME
+13. Blame 
+git blame FILE_NAME
+
+
+1. Clone latest code to your local computer
+   a) git svn clone URL
+2. Modify your code and select code you want to commit
+   a) git status    \\check which file you modified
+   b) git add FILE_NAME \\add files you want to commit
+   c) git status    \\check the commit files
+   d) git diff \\examine the code you commit, make sure you make the correct modification
+   f) git commit -m "message"
+3. Steps for you to commit code
+   a) git svn rebase  \\update to latest code, if confilict exists, solve it 
+   b) compile and test to make sure modification you add doesn't break the project
+   c) git svn dcommit
+
+Install subversion and git on uBuntu
+sudo apt-get install git git-svn subversion
+
+git configuration
+
+git config --global user.name "John Doe"
+git config --global user.email johndoe@example.com
+git config --global core.editor emacs
+git config --global alias.lg log --stat --graph --pretty=format:'%Cred%h%Creset by %an -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+git config --global alias.ci commit
+git config --global alias.co checkout
+git config --global alias.br branch
