@@ -26,7 +26,8 @@ git checkout VERSIN_NUMBER
 git checkout BRANCH_NAME
 13. Blame 
 git blame FILE_NAME
-
+14. Create tag
+git svn tag <tagname>
 
 1. Clone latest code to your local computer
    a) git svn clone URL
