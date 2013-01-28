@@ -35,6 +35,7 @@ Install
 		ace-jump-mode 
 		lua-mode
 		bookmark+
+        dired+
 
 #Install and config other useful tools 
 ###1. zsh (Awesome shell for Linux developer)
