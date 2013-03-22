@@ -62,7 +62,7 @@ git config --global alias.br branch
 
 #Useful packages for developemnt
 ```
-sudo apt-get install tree rpm rar unrar ssh curl freemind subversion meld python3
+sudo apt-get install tree rpm rar unrar ssh curl freemind subversion meld python3 valgrind
 ```
 #Useful packages for Embedded Linux developemnt
 ```
