@@ -68,6 +68,11 @@ sudo apt-get install tree rpm rar unrar ssh curl freemind subversion meld python
 ```
 sudo apt-get install tftp tftpd nfs-kernel-server xinetd portmap libncurses5-dev openjdk-7-jre minicom linux      
 ```
+#System configuration
+##.profile modification
+```
+alias minicom="minicom --color=on"
+```
 ##Note
 ```
 2012-10-09 add keybind for switching buffer as C-<pause> and M-<pause> for "previous-buffer" and "next-buffer" respectively". But I think this is easy for my HHKB keyboard.
