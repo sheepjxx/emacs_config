@@ -54,3 +54,7 @@ git config --global alias.lg log --stat --graph --pretty=format:'%Cred%h%Creset 
 git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.br branch
+
+#Using git for patch
+`git format-patch <version>` will create patches
+`git am *.patch` to apply patches
