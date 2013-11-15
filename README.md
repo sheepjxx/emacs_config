@@ -24,7 +24,7 @@ sudo update-alternatives --config etags
 ```
 ###5. Copy all lisp files under lisp folder to /usr/share/emacs/site-lisp/
 ```
-sudo cp -rf lisp /us/share/emacs/site-lisp/
+sudo cp -rf lisp /usr/share/emacs/site-lisp/
 ```
 ###6. Install packages from package management ELPA
 For emacs version smaller than 23, you need to copy package.el under list to /usr/share/emacs/sit-lisp, emacs24 already has package.el buildin
